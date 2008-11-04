@@ -8,7 +8,7 @@ c = NWGDM.new
 # Parameter: Signal Frequence (Hz/s), Sample Frequenze (Hz/s), Duration (e.g. 5 seconds)
 
 SAMPLES = 500
-WINDOW_LENGTH = 10
+WINDOW_LENGTH = 1
 
 signal_frequence = 1.0
 samples = SAMPLES
@@ -46,6 +46,7 @@ puts 'Printing signal...'
 puts 'Generate print...'
 sig = Gruff::Line.new(2000)
 sig.title = "Signal, #{Time.now}" 
+sig.theme_37signals()
 puts 'Prepraing data...'
 sig.data("Signal, fs=#{signal_frequence}, samples= #{samples}, T= #{duration}", signal)
 sig.data("Signal, fs=#{signal_frequence_1}, samples=#{samples_1}, T=#{duration_1}", signal_1)
