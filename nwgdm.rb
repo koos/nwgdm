@@ -1,5 +1,7 @@
 class NWGDM
   
+  # http://paste.frubar.net/8451/txt
+  #
   # //Sinus Abtasten
   #   sinus = new double[abtastwerte];
   #   if (sinus == NULL) {

@@ -17,3 +17,19 @@ for den in (1..20)
 end
 
 puts "e = #{e}"
+
+# File writer
+# 
+# fh = FileHelper.new('sinus.csv')
+# fh.write_to_file(signal)
+# fh = FileHelper.new('korrelation.csv')
+# fh.write_to_file(acfs)
+
+
+# Hash to array
+# require 'array'
+# a = []
+# for i in 0..1000 do
+#   a << i
+# end
+# c = a.to_hash_keys {|v| a.index(v).to_s}
