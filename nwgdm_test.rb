@@ -8,11 +8,11 @@ c = NWGDM.new
 # Parameter: Signal Frequence (Hz/s), Sample Frequenze (Hz/s), Duration (e.g. 5 seconds)
 
 SAMPLES = 500
-WINDOW_LENGTH = 1
+WINDOW_LENGTH = 500
 
-signal_frequence = 1.0
+signal_frequence = 5.0
 samples = SAMPLES
-duration = 1.0
+duration = 5.0
 
 signal_frequence_1 = 5.0
 samples_1 = SAMPLES
@@ -46,7 +46,6 @@ puts 'Printing signal...'
 puts 'Generate print...'
 sig = Gruff::Line.new(2000)
 sig.title = "Signal, #{Time.now}" 
-sig.theme_37signals()
 puts 'Prepraing data...'
 sig.data("Signal, fs=#{signal_frequence}, samples= #{samples}, T= #{duration}", signal)
 sig.data("Signal, fs=#{signal_frequence_1}, samples=#{samples_1}, T=#{duration_1}", signal_1)
@@ -74,9 +73,10 @@ puts 'Printing autocorrelation...'
 acf = Gruff::Line.new(2000)
 acf.title = "Autokorrelation #{Time.now}"
 puts 'Prepraing data...'
-acf.data("Autokorrelation Signal: fs=#{signal_frequence}, samples: #{samples}, T=#{duration}, wl=#{WINDOW_LENGTH}", acfs)
-acf.data("Autokorrelation Signal: fs=#{signal_frequence_1}, samples: #{samples_1}, T=#{duration_1}, wl=#{WINDOW_LENGTH}", acfs_1)
+# acf.data("Autokorrelation Signal: fs=#{signal_frequence}, samples: #{samples}, T=#{duration}, wl=#{WINDOW_LENGTH}", acfs)
+# acf.data("Autokorrelation Signal: fs=#{signal_frequence_1}, samples: #{samples_1}, T=#{duration_1}, wl=#{WINDOW_LENGTH}", acfs_1)
 acf.data("Autokorrelation Signal: fs=#{signal_frequence_2}, samples: #{samples_2}, T=#{duration_2}, wl=#{WINDOW_LENGTH}", acfs_2)
 # acf.data("Autokorrelation Signal: fs=#{signal_frequence_3}, samples: #{samples_3}, T=#{duration_3}, wl=#{WINDOW_LENGTH}", acfs_3)
+
 acf.write('autokorrelation.png')
 puts 'Done'

@@ -18,7 +18,7 @@ end
 
 puts "e = #{e}"
 
-# File writer
+## File writer
 # 
 # fh = FileHelper.new('sinus.csv')
 # fh.write_to_file(signal)
@@ -26,10 +26,26 @@ puts "e = #{e}"
 # fh.write_to_file(acfs)
 
 
-# Hash to array
+## Hash to array
 # require 'array'
 # a = []
 # for i in 0..1000 do
 #   a << i
 # end
 # c = a.to_hash_keys {|v| a.index(v).to_s}
+
+## Sampling a signal
+# http://paste.frubar.net/8451/txt
+#
+# //Sinus Abtasten
+#   sinus = new double[abtastwerte];
+#   if (sinus == NULL) {
+#     fprintf(stderr, "new double[abtastwerte] failed.\n");
+#     return (-1);  
+#   } 
+#   double step = (2*PI) / abtastwerte;
+#   for (int i = 0; i < abtastwerte; i++) {
+#     sinus[i] = sin(frequenz*i*step);
+#   }
+#   plot("sinus", sinus, abtastwerte, 0, (2*PI), "lines", "Sinus", "x", "y");
+
