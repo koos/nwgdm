@@ -7,12 +7,15 @@ c = NWGDM.new
 ################ First lecture: sampling a signal ################
 # Parameter: Signal Frequence (Hz/s), Sample Frequenze (Hz/s), Duration (e.g. 5 seconds)
 
-SAMPLES = 1000
-WINDOW_LENGTH = 10 
+SAMPLES = 44100
+WINDOW_LENGTH = 882 
 
-signal_frequence = 10.0
+signal_frequence = 50.0
 samples = SAMPLES
 duration = 1.0
+
+# samples_d = 100.0
+# duration_d = 1.0
 
 # signal_frequence_1 = 5.0
 # samples_1 = SAMPLES
@@ -29,6 +32,10 @@ duration = 1.0
 puts "Sampling signal Signal frequence: #{signal_frequence}, Samples: #{samples}, Duration: #{duration}..."
 signal = c.sample_sinus(signal_frequence, samples, duration)
 puts 'Done'
+
+# puts "Generating dreiecksimpuls: Samples: #{samples_d}, Duration: #{duration_d}..."
+# signal_d = c.dreiecksimpuls(samples_d, duration_d)
+# puts 'Done'
 
 # puts "Sampling signal Signal frequence: #{signal_frequence_1}, Samples: #{samples_1}, Duration: #{duration_1}..."
 # signal_1 = c.sample_sinus(signal_frequence_1, samples_1, duration_1)
@@ -51,11 +58,11 @@ sig.data("Signal, fs=#{signal_frequence}, samples= #{samples}, T= #{duration}", 
 # sig.data("Signal, fs=#{signal_frequence_1}, samples=#{samples_1}, T=#{duration_1}", signal_1)
 # sig.data("Signal, fs=#{signal_frequence_2}, samples=#{samples_2}, T=#{duration_2}", signal_2)
 # sig.data("Signal, fs=#{signal_frequence_3}, samples=#{samples_3}, T=#{duration_3}", signal_3)
+#sig.data("Dreiecksimpuls, samples= #{samples_d}, T= #{duration_d}", signal_d)
+
 
 puts 'Preparing labels...'
-
-sig.labels = {0 => '0', 11000 => '11000', 44000 => '44000'}
-
+ 
 puts 'Writing file...'
 sig.write("sinus_sampling.png")
 puts 'Done'
@@ -67,6 +74,7 @@ acfs = c.acf(signal, WINDOW_LENGTH)
 # acfs_1 = c.acf(signal_1, WINDOW_LENGTH)
 # acfs_2 = c.acf(signal_2, WINDOW_LENGTH)
 # acfs_3 = c.acf(signal_3, WINDOW_LENGTH)
+# acfs_d = c.acf(signal_d, WINDOW_LENGTH)
 puts 'Done'
 
 # puts 'Finding peaks...'
@@ -82,6 +90,7 @@ acf.data("Autokorrelation Signal: fs=#{signal_frequence}, samples: #{samples}, T
 # acf.data("Autokorrelation Signal: fs=#{signal_frequence_1}, samples: #{samples_1}, T=#{duration_1}, wl=#{WINDOW_LENGTH}", acfs_1)
 # acf.data("Autokorrelation Signal: fs=#{signal_frequence_2}, samples: #{samples_2}, T=#{duration_2}, wl=#{WINDOW_LENGTH}", acfs_2)
 # acf.data("Autokorrelation Signal: fs=#{signal_frequence_3}, samples: #{samples_3}, T=#{duration_3}, wl=#{WINDOW_LENGTH}", acfs_3)
+#acf.data("Autokorrelation Dreiecksimpuls:  fs=#{signal_frequence}, samples: #{samples}, T=#{duration}, wl=#{WINDOW_LENGTH}", acfs_d)
 
 acf.write('autokorrelation.png')
 puts 'Done'
