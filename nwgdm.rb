@@ -5,10 +5,17 @@ class NWGDM
     # f(t) = A*sin(wt+phi) = A*sin(2pi*f*t+phi) = A*sin(2pi*(1/T)*t+phi)
     result = []
     for i in 0...f_sample*duration do #*duration do
-      result[i] = Math.sin(f_signal*i*(2*Math::PI/(f_sample*duration)))
+      result[i] = Math.cos(f_signal*i*(2*Math::PI*duration/(f_sample*duration)))
       # result[i] = Math.sin(f_signal*(2*Math::PI/f_sample*duration)*i)        
      end
      result
+  end
+  
+  def rechteckimplus(f_signal, f_sample, duration)
+    result = []
+    for i in 0..f_sample do
+      
+    end
   end
   
   
@@ -31,15 +38,23 @@ class NWGDM
   # }
   
   
+  # for (int i=0; i<myFFT.spectrum.length; i++) {
+  #      sum=0;
+  #      for (int j=0; j<myFFT.spectrum.length-i; j++) {
+  #        sum += myFFT.spectrum[j] * myFFT.spectrum[j+i];
+  #      }
+  #      R[i]=sum;
+  #    }
+     
   # Calculating the Autocorrelation for a given signal
   def acf(signal, windowlength)
     n = signal.size
     denominator = 0.0
     acf = []
-    for i in 0..(n-windowlength-1) do
+    for i in 0..signal.size do
       acf[i] = 0
       denominator = 0.0
-      for k in 0..windowlength do
+      for k in 0..signal.size-1 do
         acf[i] += signal[k] * signal[k+i]
         denominator += signal[k+i]*signal[k+i]
       end
